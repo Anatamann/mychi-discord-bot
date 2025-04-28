@@ -1,7 +1,7 @@
 # MyChi bot 
 This is a discord bot for simple streak counting for learning updates / project updates of a user.
 
-## MyChi bot specifications
+## Specifications
 
 ### Features:
 
