@@ -1,6 +1,12 @@
 # MyChi bot 
 This is a discord bot for simple streak counting for learning updates / project updates of a user.
 
+## Requirements
+1. Discord Bot tokken.
+2. Pyhton Runtime version 3 and above.
+3. Check requirements.txt for language specific dependencies.
+
+  
 ## Specifications
 
 ### Features:
@@ -74,4 +80,6 @@ This is a discord bot for simple streak counting for learning updates / project 
    1. A database storage instead of a csv format storage. (sql lite)
    2. Reminders of gaps with some texts.
 
-   
+## License
+This is a hobby project and you can use it for personal use.
+[MIT](https://choosealicense.com/licenses/mit/)
