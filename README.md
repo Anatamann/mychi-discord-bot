@@ -1,8 +1,11 @@
-# My Chi bot specifications
+# MyChi bot 
+This is a discord bot for simple streak counting for learning updates / project updates of a user.
 
-## Features:
+## MyChi bot specifications
 
- ### 1. Streak Counting on daily updates on study, certificates, personal project accomplishments, etc.
+### Features:
+
+ #### 1. Streak Counting on daily updates on study, certificates, personal project accomplishments, etc.
 
    1. Each update will give the users (*saiyans*) points (*Chi*).  
       1. *10* points for daily updates.  
@@ -23,12 +26,12 @@
          5. *Super Saiyan 3*, if greater than *400* & less than *500*  
          6. *Ultra-Instinct*, if greater than *500*
 
- ### 2. The Bot is configured to serve jokes and sarcasm.
+ #### 2. The Bot is configured to serve jokes and sarcasm.
 
- ### 3. The Bot also provides details of the top competitors and monthly top & bottom performers within the server.
+ #### 3. The Bot also provides details of the top competitors and monthly top & bottom performers within the server.
 
 - - - - 
-# Commands #
+## Commands ##
 
     $coms
    Use command to get all the available commands as well as their use case details within the bot’s ability.
@@ -67,7 +70,7 @@
    Will echo the message back along with a welcome and sarcastic response.
 
 
-# Upcoming Features:
+## Upcoming Features:
    1. A database storage instead of a csv format storage. (sql lite)
    2. Reminders of gaps with some texts.
 
