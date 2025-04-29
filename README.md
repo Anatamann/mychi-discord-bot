@@ -1,11 +1,22 @@
 # MyChi bot 
-This is a discord bot for simple streak counting for learning updates / project updates of a user.
+This is a discord bot for tracking learning-updates/project-updates of a user and use it as motivation for consistency through its point system.
+(*Note*): This is not a public bot and thus you have to create your own private Dicord App through discord developer's account and then use this repo for the working logic and deploy it independently through your own machine or a 24x7 cloud provider. 
 
-## Requirements
-1. Discord Bot tokken.
+We have been using [Sparked host](https://billing.sparkedhost.com/aff.php?aff=2780) for our dicord bot deployment for 24x7 up time.
+
+
+## Use Cases
+1. A user can keep track of their learning habits.
+2. A user can interact with the bot using casual commands like jokes and sarcasm responses also.
+3. Multiple users registered within your bot can track each others progress through points system and share knowledge about their area of interests.
+4. Features like *$whos_treat* and *$mega_star* are builtin commands for a healthy competition among the users.
+
+## Setup:
+
+### Requirements
+1. Discord Bot tokken. (https://discord.com/developers)
 2. Pyhton Runtime version 3 and above.
-3. Check requirements.txt for language specific dependencies.
-
+3. Check requirements.txt for thrid party library dependencies like *discord.py*. (*Note*: To save yourself from dependency conflicts if occur use Docker for deployment. *Docker-volume* must be configured for persistent user data.)
   
 ## Specifications
 
@@ -34,7 +45,7 @@ This is a discord bot for simple streak counting for learning updates / project 
 
  #### 2. The Bot is configured to serve jokes and sarcasm.
 
- #### 3. The Bot also provides details of the top competitors and monthly top & bottom performers within the server.
+ #### 3. The Bot also provides details of the top competitors and monthly top & bottom performers.
 
 - - - - 
 ## Commands ##
@@ -52,7 +63,7 @@ This is a discord bot for simple streak counting for learning updates / project 
    Use command to get the details of which mode/title you currently hold based on your total points.
     
     $fighters
-   Use command to get the details of the top 5 competitors within the server.
+   Use command to get the details of the top 5 competitors.
 
     $mega_star
    Use command to get the details of the monthly top performer.
@@ -61,7 +72,7 @@ This is a discord bot for simple streak counting for learning updates / project 
    Use command to get the details of the monthly bottom performer.
     
     $chi_<users_discord_username>
-   Use command to get the particular user details.
+   Use command to get the particular user details. (*Note:* Use the username and not the displayname of the user.)
     
     $joke
    Use command to get a joke in response.
