@@ -1,51 +1,76 @@
-# MyChi bot 
-This is a discord bot for tracking learning-updates/project-updates of a user and use it as motivation for consistency through its point system.
-(*Note*): This is not a public bot and thus you have to create your own private Dicord App through discord developer's account and then use this repo for the working logic and deploy it independently through your own machine or a 24x7 cloud provider. 
+# MyChi Bot 💥  
+![MIT License](https://img.shields.io/badge/license-MIT-blue.svg)
+![Python](https://img.shields.io/badge/Python-3%2B-blue.svg)
+![Discord Bot](https://img.shields.io/badge/Discord-Bot-5865F2?logo=discord&logoColor=white)
 
-We have been using [Sparked host](https://billing.sparkedhost.com/aff.php?aff=2780) for our dicord bot deployment for 24x7 up time.
+A Discord bot designed to track users' learning or project updates, reward consistency through a gamified points system, and add some fun through jokes and sarcasm.
 
+---
 
-## Use Cases
-1. A user can keep track of their learning habits.
-2. A user can interact with the bot using casual commands like jokes and sarcasm responses also.
-3. Multiple users registered within your bot can track each others progress through points system and share knowledge about their area of interests.
-4. Features like *$whos_treat* and *$mega_star* are builtin commands for a healthy competition among the users.
+> ⚠️ **Note:** This is a private bot. To use it, you must create your own Discord App via the [Discord Developer Portal](https://discord.com/developers) and host the bot independently on your machine or a 24/7 cloud provider.
 
-## Setup:
+We recommend [Sparked Host](https://billing.sparkedhost.com/aff.php?aff=2780) for 24/7 bot uptime.
+
+---
+
+## 🚀 Use Cases
+
+1. Track your learning, certifications, or personal project updates.
+2. Interact casually using built-in commands for jokes or sarcastic responses.
+3. Compete with fellow users in your server via the point system and leaderboard.
+4. Commands like `$whos_treat` and `$mega_star` keep the competition fun and engaging.
+
+---
+
+## ⚙️ Setup
 
 ### Requirements
-1. Discord Bot tokken. (https://discord.com/developers)
-2. Pyhton Runtime version 3 and above.
-3. Check requirements.txt for thrid party library dependencies like *discord.py*. (*Note*: To save yourself from dependency conflicts if occur use Docker for deployment. *Docker-volume* must be configured for persistent user data.)
-  
-## Specifications
 
-### Features:
+- A Discord Bot Token ([Get it here](https://discord.com/developers))
+- Python 3+
+- Required dependencies listed in `requirements.txt`
+  > 💡 Tip: Use Docker for deployment to avoid dependency conflicts. Be sure to configure `docker volumes` for **persistent user data**.
 
- #### 1. Streak Counting on daily updates on study, certificates, personal project accomplishments, etc.
+---
 
-   1. Each update will give the users (*saiyans*) points (*Chi*).  
-      1. *10* points for daily updates.  
-      2. *5* points for same day updates.  
-      3. *(1/3)* points will be deducted on daily streak misses, the deductions will be reflected on the next update by the user.  
-         1. Ex:  if a user updates on *04-01-2025* and their last update was on *01-01-2025* i.e.,*3* days of gap then the latest points given to the user will be *10 - 1 = 9*.  
-         2. The point deduction will be reflected on the total points only when the gap is in multiples of *3*. The gaps of *1* and *2* will carry forward on the total gap counter.   
-      4. Special points are provided:  
-         1. Count streak = *3 days* then *+30 points* instead of *10 points*  
-         2. Count streak = *5 days* then *+50 points* instead of *10 points* 
-         3. Count streak = *10 days* then *+100 points* instead of *10 points*  
-         4. Same day update = *5 points* instead of *10 points*
-      5. Total points of each user categories them as corresponding modes/titles on the server.  
-         1. *Normal*, if less than *100*  
-         2. *Saiyan*, if greater than *100* & less than *200*  
-         3. *Super Saiyan*, if greater than *200* & less than *300*  
-         4. *Super Saiyan 2*, if greater than *300* & less than *400*  
-         5. *Super Saiyan 3*, if greater than *400* & less than *500*  
-         6. *Ultra-Instinct*, if greater than *500*
+## 🧠 Specifications
 
- #### 2. The Bot is configured to serve jokes and sarcasm.
+### 🔁 Streak and Points Logic
 
- #### 3. The Bot also provides details of the top competitors and monthly top & bottom performers.
+Each update contributes to a user’s (*Saiyan's*) total **Chi** (points):
+
+| Type                            | Chi Awarded |
+|---------------------------------|-------------|
+| Daily Update                    | +10         |
+| Same-Day Additional Update      | +5          |
+| Streak Miss Penalty (per 3-day) | −1          |
+
+**Example**  
+Update on 01-01-2025 → Next update on 04-01-2025 (3-day gap) → Chi = **9** (10 − 1)
+
+#### ✅ Bonus Points for Streaks:
+| Streak Length | Bonus Chi |
+|---------------|-----------|
+| 3 days        | +30       |
+| 5 days        | +50       |
+| 10 days       | +100      |
+
+> Note: Point deduction affects total Chi only if the gap is a multiple of 3. Gaps of 1–2 days are carried forward cumulatively.
+
+### 🧬 Titles / Power Levels
+
+Your **Chi level** determines your title:
+
+| Title             | Chi Range         |
+|-------------------|-------------------|
+| Normal            | < 100             |
+| Saiyan            | 100 – 199         |
+| Super Saiyan      | 200 – 299         |
+| Super Saiyan 2    | 300 – 399         |
+| Super Saiyan 3    | 400 – 499         |
+| Ultra-Instinct    | 500+              |
+
+---
 
 - - - - 
 ## Commands ##
@@ -87,10 +112,21 @@ We have been using [Sparked host](https://billing.sparkedhost.com/aff.php?aff=27
    Will echo the message back along with a welcome and sarcastic response.
 
 
-## Upcoming Features:
-   1. A database storage instead of a csv format storage. (sql lite)
-   2. Reminders of gaps with some texts.
+---
 
-## License
-This is a hobby project and you can use it for personal use.
-[MIT](https://choosealicense.com/licenses/mit/)
+## 🛠️ Upcoming Features
+
+- 📦 **Database Integration:** Move from flat-file (CSV) storage to **SQLite** for more efficient, scalable data handling.
+- 🔔 **Automated Reminders:** Notify users about missed streaks and pending updates with fun & sarcastic nudges.
+- 📈 **Progress Reports:** Weekly and monthly Chi gain summaries via DM or public leaderboard.
+- 🌐 **Web Dashboard (optional):** Minimal web dashboard to view Chi history and update logs.
+- 🧙‍♂️ **Role Syncing:** Automatically assign Discord roles based on Chi levels.
+- ⏰ **Time-Zone Aware Logging:** Accurate update tracking across different user time zones.
+
+---
+## 🪪 License
+
+This is a personal/hobby project maintained with ❤️ for fun and motivation.  
+You're free to use, modify, or fork this bot for personal or server use.
+
+**Licensed under the [MIT License](https://choosealicense.com/licenses/mit/).**
