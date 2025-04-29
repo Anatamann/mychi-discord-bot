@@ -328,10 +328,12 @@ async def mega_star(ctx):
 
 #-----------------End-of-BOT_COMMANDS-BLOCKS------------------------------#
 
+#-----------------Main starts from here--------------------------------#
+
 #Load environment variables from .env file
 load_dotenv()
 
-#Get the token from the environment variables
+#Use of the discord token from the environment variables. Note: When using cloud services please use Secrets and Keys to invoke token.
 token = os.getenv('TOKEN')
 
 if token is None:
@@ -340,4 +342,4 @@ if token is None:
 #Run the bot
 bot.run(token)
 
-#-----------------End-of-File------------------------------------#
+#-----------------Program Ends here------------------------------------#
