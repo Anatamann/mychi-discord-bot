@@ -84,7 +84,7 @@ Your **Chi level** determines your title:
     $mychi 
    Use the command to get the details of your total points (Chi) , last update date, gaps, streak count/continuity.
     
-    $my_level
+    $my_mode
    Use command to get the details of which mode/title you currently hold based on your total points.
     
     $fighters
@@ -105,7 +105,7 @@ Your **Chi level** determines your title:
     $burnMe
    Use command to get sarcasm in response.
    
-    $levels
+    $modes
    Use command to get the list of the mode categories.
     
     $<any_other_message>
@@ -116,7 +116,7 @@ Your **Chi level** determines your title:
 
 ## 🛠️ Upcoming Features
 
-- 📦 **Database Integration:** Move from flat-file (CSV) storage to **SQLite** for more efficient, scalable data handling.
+- 📦 ~~**Database Integration:** Move from flat-file (CSV) storage to **SQLite** for more efficient, scalable data handling.~~ ✅(05-05-2025)
 - 🔔 **Automated Reminders:** Notify users about missed streaks and pending updates with fun & sarcastic nudges.
 - 📈 **Progress Reports:** Weekly and monthly Chi gain summaries via DM or public leaderboard.
 - 🌐 **Web Dashboard (optional):** Minimal web dashboard to view Chi history and update logs.
