@@ -1,4 +1,4 @@
-id,name,mychi,gap,continuity,date
-0100ada,test1,1.0,0,1,2025-01-21
-0100ad44,test2,1.0,2,0,2025-01-22
-13315646232728639,anataman,10.0,0,0,2025-01-24
+id,name,mychi,gap,continuity,date,mode,reminder
+0100ada,test1,1,0,1,2025-01-21 00:00:00,Normal,0
+0100ad44,test2,1,2,0,2025-01-22 00:00:00,Normal,0
+13315646232728639,anataman,10,0,0,2025-01-24 00:00:00,Normal,0
