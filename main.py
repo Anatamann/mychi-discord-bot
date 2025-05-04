@@ -179,8 +179,8 @@ def chi(id, name):
         continuity = saiyan['continuity']
         new_gap = saiyan['gap']
 
-        chi_points = 20
-        chi_points_same_day = 10
+        chi_points = 10
+        chi_points_same_day = 5
         streak_3_points = 30
         streak_5_points = 50
         streak_10_points = 100
@@ -191,7 +191,7 @@ def chi(id, name):
             my_chi += chi_points_same_day
             continuity += 0
             new_gap = 0 
-        elif gap <= 7:
+        elif gap == 1:
             new_gap = 0
             continuity += 1
             if continuity % 10 == 0:
@@ -201,12 +201,18 @@ def chi(id, name):
             elif continuity < 10 & continuity % 3 == 0:
                 my_chi += streak_3_points
             else:
-                my_chi += 20
+                my_chi += chi_points
         else:
-                penalty = round((gap / 2),0)
-                my_chi += 20 - penalty
+            new_gap += gap
+            continuity = 0
+            if new_gap%3==0:
+                penalty = round((new_gap / 3),0)
+                my_chi += chi_points - penalty
                 new_gap = 0
-                continuity = 0
+            else:
+                penalty = round((new_gap / 3),0)
+                my_chi += chi_points - penalty
+                new_gap = gap % 3 
         mode = my_level(my_chi)
 
         # Update database
