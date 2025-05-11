@@ -273,12 +273,26 @@ def Rank(id):
             return None
         return result
 
+#-------------------Role-assigning-----------------------------------------#
 
+async def assign_role(ctx, user_id: int, role_name: str):
+    guild = ctx.guild
+    member = guild.get_member(user_id)
+    if member is None:
+        member = await guild.fetch_member(user_id)
+        if not member:
+            await ctx.send("User not found in the server.")
+    role = discord.utils.get(guild.roles, name=role_name)
+    if not role:
+            await ctx.send("Role not found in the server.")
+    if member and role:
+        await member.add_roles(role)
+        await ctx.send(f"Role '{role_name}' assigned to {member.display_name}.")
 
 
 #-----------------End-of-Functions------------------------------#
 
-#-----------------BOT_EVENTS------------------------------------#
+#-----------------Bot_Events-Starts------------------------------------#
 
 @bot.event
 async def on_ready():
@@ -286,15 +300,20 @@ async def on_ready():
 
 @bot.event
 async def on_message(message):
-
+    ctx = await bot.get_context(message)
+    
     if message.author == bot.user:
         return
     else:
         if (message.content[:2]=='>>'):
+            saiyan = saiyan_search(message.author.id)
+            mode = saiyan['mode'] 
             await message.channel.send('We see a project update here, way to go man. Your Chi is being updated...')
             data = chi(message.author.id, message.author)
             await message.channel.send(f'Your Chi is now: {data}')
-        
+            new_role = my_level(data)
+            if (mode != new_role):
+                await assign_role(ctx, message.author.id,new_role)
         elif message.content == '$mychi':
             await bot.process_commands(message)
 
@@ -363,11 +382,11 @@ async def on_message(message):
                 reply2= f'Check **$coms** command to perform executable tasks.Cheers' 
                 await message.channel.send(f'Yooo...\n**{author}**\n\n*{reply1}*\n\n{reply2}')
 
-#-----------------End-of-BOT_EVENTS------------------------------#
+#-----------------End-of-BOT_EVENTS--------------------------------------#
 
 #-----------------BOT_COMMANDS-BLOCKS------------------------------------#
 
-#-------------------coms----------------------#
+#-------------------Coms-------------------------------------------------#
 @bot.command()
 async def coms(ctx):
     update = '**>>** : for any updates and gaining chi_scores'
