@@ -484,6 +484,9 @@ async def whos_treat(ctx):
         if not star:
                 await ctx.send("No activity found!")
                 return
+        if treat_giver == star:
+            await ctx.send(f"Only A Single Sigma Hustler this month!\n**{star}**")
+            return
     reply1 = f'Is month ki party \n**{treat_giver}** ke taraf se.'
     reply2 = f'Is month ka Star, drumrolls please......\n **{star}**'
     await ctx.send('\n'+reply1 + '\n' + reply2)
