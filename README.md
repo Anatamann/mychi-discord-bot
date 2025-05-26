@@ -117,10 +117,10 @@ Your **Chi level** determines your title:
 ## 🛠️ Upcoming Features
 
 - 📦 ~~**Database Integration:** Move from flat-file (CSV) storage to **SQLite** for more efficient, scalable data handling.~~ ✅(05-05-2025)
-- 🔔 **Automated Reminders:** Notify users about missed streaks and pending updates with fun & sarcastic nudges.
+- 🔔 ~~**Automated Reminders:** Notify users about missed streaks and pending updates with fun & sarcastic nudges.~~ ✅(26-05-2025)
 - 📈 **Progress Reports:** Weekly and monthly Chi gain summaries via DM or public leaderboard.
 - 🌐 **Web Dashboard (optional):** Minimal web dashboard to view Chi history and update logs.
-- 🧙‍♂️ **Role Syncing:** Automatically assign Discord roles based on Chi levels.
+- 🧙‍♂️ ~~**Role Syncing:** Automatically assign Discord roles based on Chi levels.~~ ✅(12-05-2025)
 - ⏰ **Time-Zone Aware Logging:** Accurate update tracking across different user time zones.
 
 ---
