@@ -1,6 +1,6 @@
 #-------------Dependencies----------------#
 import discord
-from discord.ext import commands
+from discord.ext import commands, tasks
 import os
 import csv
 import datetime as dt
@@ -178,7 +178,8 @@ def chi(id, name):
         my_chi = saiyan['mychi']
         continuity = saiyan['continuity']
         new_gap = saiyan['gap']
-
+        new_reminder = saiyan['reminder']
+        
         chi_points = 10
         chi_points_same_day = 5
         streak_3_points = 30
@@ -214,13 +215,13 @@ def chi(id, name):
                 my_chi += chi_points - penalty
                 new_gap = gap % 3 
         mode = my_level(my_chi)
-
+        new_reminder=0
         # Update database
         cursor.execute('''
             UPDATE chi_table 
-            SET mychi=?, gap=?, continuity=?, date=?, mode=?
+            SET mychi=?, gap=?, continuity=?, date=?, mode=?, reminder=?
             WHERE id=?
-        ''', ( my_chi, new_gap, continuity, today.strftime("%Y-%m-%d %H:%M:%S"), mode,str(id)))
+        ''', ( my_chi, new_gap, continuity, today.strftime("%Y-%m-%d %H:%M:%S"), mode, new_reminder,str(id)))
         conn.commit()
         return my_chi
 
@@ -297,6 +298,7 @@ async def assign_role(ctx, user_id: int, role_name: str):
 @bot.event
 async def on_ready():
     print(f'We have logged in as {bot.user}')
+    check_streak_gaps.start()
 
 @bot.event
 async def on_message(message):
@@ -515,6 +517,66 @@ async def mega_star(ctx):
     await ctx.send(f'The MegaStar is: \n**{rank}. {ctx.author}** with a Chi of *{my_chi}* \nat Saiyan Mode: **{mode}**')
 
 #-----------------End-of-BOT_COMMANDS-BLOCKS------------------------------#
+
+#-----------------Reminder-task-for-the-bot-------------------------------#
+@tasks.loop(hours=24)
+async def check_streak_gaps():
+    await bot.wait_until_ready()
+    conn = sqlite3.connect('chi_database.db')
+    cursor = conn.cursor()
+    cursor.execute("SELECT id, date, reminder FROM chi_table")
+    rows = cursor.fetchall()
+    # today =  dt.datetime.now(ist)
+    for id, date, reminder in rows:
+        if reminder > 0:
+            reminder -= 1
+            cursor.execute('''
+                        UPDATE chi_table 
+                        SET reminder=?
+                        WHERE id=?
+                    ''', ( reminder,str(id)))
+            conn.commit()
+            continue                             #-------reminder already given. Skip today
+        else:
+            last_dt = dt.datetime.strptime(date, "%Y-%m-%d %H:%M:%S").replace(tzinfo=ist)
+            gap = (today - last_dt).days
+            try:
+                user = await bot.fetch_user(id)
+            except:
+                print("user not found")
+                continue
+            if gap > 0 and gap % 7 == 0:
+                
+                try:
+                    await user.send(
+                        f"Hi! It's your d-day with gap {gap} days. Time to activate the **Saiyan** mode!"
+                    )
+                    reminder=6
+                    cursor.execute('''
+                        UPDATE chi_table 
+                        SET reminder=?
+                        WHERE id=?
+                    ''', ( reminder,str(id)))
+                    conn.commit()
+                except Exception as e:
+                    print(f"Could not DM {id}: {e}")
+            elif gap > 3:
+                try:
+                    await user.send(
+                        f"Hi! You haven't logged any updates for {gap} days. You can do much better than this, come-on Level up your chi today!"
+                    )
+                    reminder+=3
+                    cursor.execute('''
+                        UPDATE chi_table 
+                        SET reminder=?
+                        WHERE id=?
+                    ''', ( reminder,str(id)))
+                    conn.commit()
+                except Exception as e:
+                    print(f"Could not DM {id}: {e}")
+    conn.close()
+#-------------------------------------------------------------------------------#
+
 
 #Load environment variables from .env file
 load_dotenv()
