@@ -1,1 +1,14 @@
 .env
+# SQLite database files
+*.db
+*.sqlite
+*.sqlite3
+
+# Database backup files
+*.db-journal
+*.db-shm
+*.db-wal
+
+# log file changes
+
+*.log
